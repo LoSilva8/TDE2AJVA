@@ -1,14 +1,9 @@
-import java.util.HashMap;
-import java.util.Map;
-
 public class DecodificadorMorse {
 
     private NoArvore raizMorse;
-    private Map<Character, String> mapaMorse;
 
     public DecodificadorMorse() {
         construirArvoreMorse();
-        construirMapaMorse();
     }
 
     private void construirArvoreMorse() {
@@ -75,37 +70,6 @@ public class DecodificadorMorse {
         );
     }
 
-    private void construirMapaMorse() {
-        mapaMorse = new HashMap<>();
-        mapaMorse.put('A', ".-");
-        mapaMorse.put('B', "-...");
-        mapaMorse.put('C', "-.-.");
-        mapaMorse.put('D', "-..");
-        mapaMorse.put('E', ".");
-        mapaMorse.put('F', "..-.");
-        mapaMorse.put('G', "--.");
-        mapaMorse.put('H', "....");
-        mapaMorse.put('I', "..");
-        mapaMorse.put('J', ".---");
-        mapaMorse.put('K', "-.-");
-        mapaMorse.put('L', ".-..");
-        mapaMorse.put('M', "--");
-        mapaMorse.put('N', "-.");
-        mapaMorse.put('O', "---");
-        mapaMorse.put('P', ".--.");
-        mapaMorse.put('Q', "--.-");
-        mapaMorse.put('R', ".-.");
-        mapaMorse.put('S', "...");
-        mapaMorse.put('T', "-");
-        mapaMorse.put('U', "..-");
-        mapaMorse.put('V', "...-");
-        mapaMorse.put('W', ".--");
-        mapaMorse.put('X', "-..-");
-        mapaMorse.put('Y', "-.--");
-        mapaMorse.put('Z', "--..");
-        mapaMorse.put(' ', "/");
-    }
-
     private char morseParaCaractere(NoArvore raiz, String sequencia, int indice) {
         if (raiz == null) {
             return '\0';
@@ -150,13 +114,47 @@ public class DecodificadorMorse {
 
         for (int i = 0; i < texto.length(); i++) {
             char caractere = texto.charAt(i);
-            if (mapaMorse.containsKey(caractere)) {
-                codigoMorse.append(mapaMorse.get(caractere)).append(" ");
+            String codigo = obterCodigoMorse(caractere);
+            if (codigo != null) {
+                codigoMorse.append(codigo).append(" ");
             } else {
                 codigoMorse.append("? ");
             }
         }
 
         return codigoMorse.toString().trim();
+    }
+
+    private String obterCodigoMorse(char caractere) {
+        switch (caractere) {
+            case 'A': return ".-";
+            case 'B': return "-...";
+            case 'C': return "-.-.";
+            case 'D': return "-..";
+            case 'E': return ".";
+            case 'F': return "..-.";
+            case 'G': return "--.";
+            case 'H': return "....";
+            case 'I': return "..";
+            case 'J': return ".---";
+            case 'K': return "-.-";
+            case 'L': return ".-..";
+            case 'M': return "--";
+            case 'N': return "-.";
+            case 'O': return "---";
+            case 'P': return ".--.";
+            case 'Q': return "--.-";
+            case 'R': return ".-.";
+            case 'S': return "...";
+            case 'T': return "-";
+            case 'U': return "..-";
+            case 'V': return "...-";
+            case 'W': return ".--";
+            case 'X': return "-..-";
+            case 'Y': return "-.--";
+            case 'Z': return "--..";
+            case ' ': return "/";
+            default: return null;
+        }
     }
 }
