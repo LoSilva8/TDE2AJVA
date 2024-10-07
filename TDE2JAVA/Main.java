@@ -33,7 +33,7 @@ public class Main {
                     System.out.println("Programa finalizado");
                     break;
                 default:
-                    System.out.println("Opção invalida. Por favor, tente novamente.");
+                    System.out.println("Opcao invalida. Por favor, tente novamente.");
             }
 
             System.out.println();
