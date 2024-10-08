@@ -48,7 +48,7 @@ public class DecodificadorMorse {
             new NoArvore(
                 'N',
                 new NoArvore('D',
-                    new NoArvore('B', null, null),
+                    new NoArvore('B',null, null),
                     new NoArvore('X', null, null)
                 ),
                 new NoArvore('K',
@@ -155,6 +155,21 @@ public class DecodificadorMorse {
             case 'Z': return "--..";
             case ' ': return "/";
             default: return null;
+        }
+    }
+
+    public void visualizarArvore() {
+        System.out.println("Árvore Morse:");
+        visualizarArvore(raizMorse, "", true);
+    }
+
+    private void visualizarArvore(NoArvore no, String prefixo, boolean ehFilhoEsquerdo) {
+        if (no != null) {
+            System.out.println(prefixo + (ehFilhoEsquerdo ? "├── " : "└── ") + (no.getCaractere() == '\0' ? "∅" : no.getCaractere()));
+
+            // Chamar recursivamente para os filhos
+            visualizarArvore(no.getFilhoEsquerdo(), prefixo + (ehFilhoEsquerdo ? "│   " : "    "), true);
+            visualizarArvore(no.getFilhoDireito(), prefixo + (ehFilhoEsquerdo ? "│   " : "    "), false);
         }
     }
 }

@@ -5,12 +5,14 @@ public class Main {
         DecodificadorMorse decodificador = new DecodificadorMorse();
         Scanner scanner = new Scanner(System.in);
         boolean continuar = true;
+        
 
         while (continuar) {
             System.out.println("Selecione a opcao desejada:");
             System.out.println("1. Decodificar Morse para Texto");
             System.out.println("2. Codificar Texto para Morse");
-            System.out.println("3. Sair");
+            System.out.println("3. Vizualizar árvore");
+            System.out.println("4. Sair");
             System.out.print("Opcao: ");
 
             String opcao = scanner.nextLine().trim();
@@ -29,6 +31,9 @@ public class Main {
                     System.out.println("Codigo Morse: " + codigo);
                     break;
                 case "3":
+                    decodificador.visualizarArvore();
+                    break;
+                case "4":
                     continuar = false;
                     System.out.println("Programa finalizado");
                     break;
