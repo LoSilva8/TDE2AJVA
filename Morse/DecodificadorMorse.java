@@ -167,7 +167,6 @@ public class DecodificadorMorse {
         if (no != null) {
             System.out.println(prefixo + (ehFilhoEsquerdo ? "├── " : "└── ") + (no.getCaractere() == '\0' ? "∅" : no.getCaractere()));
 
-            // Chamar recursivamente para os filhos
             visualizarArvore(no.getFilhoEsquerdo(), prefixo + (ehFilhoEsquerdo ? "│   " : "    "), true);
             visualizarArvore(no.getFilhoDireito(), prefixo + (ehFilhoEsquerdo ? "│   " : "    "), false);
         }
